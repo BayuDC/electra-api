@@ -15,6 +15,10 @@ Route::prefix('/auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
     Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
 });
+Route::prefix('/oauth')->middleware('web')->group(function () {
+    Route::get('/google', [AuthController::class, 'googleRedirect']);
+    Route::get('/google/callback', [AuthController::class, 'googleCallback']);
+});
 
 Route::middleware('auth:sanctum')->group(function () {
 });
