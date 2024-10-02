@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder {
@@ -24,6 +26,30 @@ class DatabaseSeeder extends Seeder {
             'email' => 'user@localhost',
             'password' => bcrypt('password'),
             'role' => 'user',
+        ]);
+
+        Category::create([
+            'name' => 'Resistor',
+            'slug' => 'resistor',
+        ]);
+
+        Product::create([
+            'name' => 'Resistor 1K Ohm',
+            'slug' => 'resistor-1k-ohm',
+            'price' => 100,
+            'unit' => 'pcs',
+            'picture' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg',
+            'description' => '',
+            'category_id' => 1,
+        ]);
+        Product::create([
+            'name' => 'Resistor 1.2K Ohm',
+            'slug' => 'resistor-1k2-ohm',
+            'price' => 100,
+            'unit' => 'pcs',
+            'picture' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg',
+            'description' => '',
+            'category_id' => 1,
         ]);
     }
 }

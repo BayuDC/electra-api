@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 
 Route::get('/', function () {
@@ -20,5 +21,11 @@ Route::prefix('/oauth')->middleware('web')->group(function () {
     Route::get('/google/callback', [AuthController::class, 'googleCallback']);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{product}', [ProductController::class, 'show']);
+    Route::post('/products', [ProductController::class, 'store']);
+    Route::put('/products/{product}', [ProductController::class, 'update']);
+    Route::delete('/products/{product}', [ProductController::class, 'destroy']);
 });
