@@ -13,8 +13,6 @@ class DatabaseSeeder extends Seeder {
      * Seed the application's database.
      */
     public function run(): void {
-        // User::factory(10)->create();
-
         User::create([
             'name' => 'Admin',
             'email' => 'admin@localhost',
@@ -28,28 +26,39 @@ class DatabaseSeeder extends Seeder {
             'role' => 'user',
         ]);
 
-        Category::create([
-            'name' => 'Resistor',
-            'slug' => 'resistor',
-        ]);
 
-        Product::create([
-            'name' => 'Resistor 1K Ohm',
-            'slug' => 'resistor-1k-ohm',
-            'price' => 100,
-            'unit' => 'pcs',
-            'picture' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg',
-            'description' => '',
-            'category_id' => 1,
-        ]);
-        Product::create([
-            'name' => 'Resistor 1.2K Ohm',
-            'slug' => 'resistor-1k2-ohm',
-            'price' => 100,
-            'unit' => 'pcs',
-            'picture' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg',
-            'description' => '',
-            'category_id' => 1,
-        ]);
+        $file = fopen(base_path("database/seeders/dummy/categories.csv"), "r");
+
+        $first = true;
+        while (($row = fgetcsv($file, 2000, ",")) !== false) {
+            if (!$first) {
+                Category::create([
+                    "name" => $row['0'],
+                    "slug" => $row['1'],
+                ]);
+            }
+            $first = false;
+        }
+
+        fclose($file);
+
+        $file = fopen(base_path("database/seeders/dummy/products.csv"), "r");
+
+        $first = true;
+        while (($row = fgetcsv($file, 2000, ",")) !== false) {
+            if (!$first) {
+                Product::create([
+                    "name" => $row['0'],
+                    "slug" => $row['1'],
+                    "price" => $row['2'],
+                    "unit" => $row['3'],
+                    'category_id' => $row['4'],
+                    "picture" => $row['5'],
+                ]);
+            }
+            $first = false;
+        }
+
+        fclose($file);
     }
 }

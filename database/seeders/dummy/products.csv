@@ -1,0 +1,6 @@
+name,slug,price,unit,category_id,picture
+Resistor 1K Ohm,resistor-1k,200,pcs,1,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg
+Resistor 1.2K Ohm,resistor-1k2,200,pcs,1,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg
+Resistor 1.5K Ohm,resistor-1k5,200,pcs,1,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/3_Resistors.jpg/640px-3_Resistors.jpg
+Capacitor Elco 100 uF,elco-100,200,pcs,2,https://pengenbeli.com/16709-large_default/kapasitor-elco-1000uf-10v.jpg
+Capacitor Elco 470 uF,elco-470,200,pcs,2,https://pengenbeli.com/16709-large_default/kapasitor-elco-1000uf-10v.jpg
