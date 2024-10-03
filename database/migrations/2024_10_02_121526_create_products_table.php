@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->decimal('price');
+            $table->decimal('price', 10, 0);
             $table->string('unit');
             $table->string('picture')->nullable();
             $table->text('description')->nullable();

@@ -9,11 +9,11 @@ use App\Models\Product;
 
 class ProductController extends Controller {
     public function index(Request $request) {
-        return Product::all();
+        return Product::with('category')->get();
     }
 
     public function show(Request $request, Product $product) {
-        return $product;
+        return $product->load('category');
     }
 
     public function store(StoreProductRequest $request) {
