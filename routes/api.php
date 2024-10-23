@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Middleware\OnlyAdmin;
 use App\Http\Middleware\OnlyUser;
+use App\Http\Controllers\ChatController;
 
 Route::get('/', function () {
     return response()->json(['message' => 'Hello World!']);
@@ -43,5 +44,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::middleware(OnlyUser::class)->group(function () {
         Route::get('/cart', [CartController::class, 'index']);
         Route::patch('/cart', [CartController::class, 'update']);
+
+        Route::post('/rooms', [ChatController::class, 'createRoom']);
     });
+
+    Route::get('/messages/{room}', [ChatController::class, 'getMessages']);
+    Route::post('/messages/{room}', [ChatController::class, 'sendMessage']);
 });
